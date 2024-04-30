@@ -41,5 +41,11 @@ To make it work, you need to get your own API key. Follow these steps:
 
 Now, go to the folder with Shoutout wall, navigate to "public" and open "index.html" in any text editor. You will see a section where you need to paste your API key.
 
+![Shoutout Wall](img/img8.png)
+
+![Shoutout Wall](img/img9.png)
+
 **Opening:**
 Now you can do it! Open cmd, navigate to the directory where Shoutout wall is located (`cd <path_to_shoutout_wall>`), then type `node .`. You will see the message as shown in the screenshot. Finally, go to [http://localhost:3000/](http://localhost:3000/) to access the Shoutout wall.
+
+![Shoutout Wall](img/img10.png)
