@@ -1,0 +1,185 @@
+@font-face {
+
+  font-family: "bodyfont";
+
+  src: url("fonts/Roboto-Bold.ttf");
+
+}
+
+.subscriberCount {
+  
+}
+
+mcb {
+  color: black;
+}
+
+.viewCount {
+  color: black;
+}
+
+
+@font-face {
+
+  font-family: "headfont";
+
+  src: url("fonts/CaviarDreams_Bold.ttf");
+
+}
+
+
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+.channel_1.cardCounts {
+  background-color: #61baff;
+  animation: colorChange 5s infinite alternate;
+}
+
+body {
+
+  background-color: rgba(0,0,0,0)
+
+}
+
+
+
+
+.subscriberCount {
+
+  font-size: 31px;
+
+  margin-top: 7px;
+
+  font-family : "bodyfont";
+
+  font-weight: 400;
+  
+  color: rgb(0, 0, 0);
+
+  transition: color 0.5s ease, opacity 0.5s ease;
+}
+
+
+
+.channelImage {
+
+  height: 74px;
+
+  width: 74px;
+
+  padding: 2px;
+
+   filter: blur(.5px);
+  
+  -webkit-filter: blur(0px);
+
+  margin-right: 5px;
+
+  margin-bottom: 5px;
+  
+  float: left;
+
+ margin-left: 7px;
+
+ margin-top: -1px;
+  border-radius: 50%;
+
+}
+
+
+
+.channelName {
+
+  white-space: nowrap; 
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  font-family: "bodyfont";
+
+  font-size: 20px;
+
+  margin-top: -5px;
+
+  color: black;
+
+}
+
+
+
+.card-content {
+
+  padding: 5px;
+
+}
+
+
+.cardCounts {
+
+  display: inline-block;
+
+  height: 72px;
+
+  font-size: 13px;
+
+  width: 270px;
+
+  border: 2px solid rgba(0,0,0,0);
+
+  border: 1px solid #000;
+
+  margin: 1.5px;
+
+  float: left;
+
+  transition: 2s ease-in-out;
+
+  background-color: rgb(255, 255, 255);
+
+  position: relative;
+
+}
+
+.num {
+  position: absolute;
+  font-family: 'bodyfont';
+}
+
+
+
+body {
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forward;
+}
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+@keyframes colorChange {
+  0% {
+    background-color: #380bff;
+  }
+  100% {
+    background-color: #38c0f5;
+  }
+}
+
+.odometer-animating-up {
+  color: #00ff00;
+  transition: ease-in;
+}
+.odometer-animating-down {
+  color: red;
+  transition: ease-in-out;
+}

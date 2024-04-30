@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="odometer.css">
+    <title>Shoutout Wall! | YT | DevAles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+</head>
+<body>
+    <div class="cards-container"></div>
+
+<script>
+  var config = {
+    channelCount: 50,
+    apiKey: "YOUR_API_KEY_HERE" // Paste your API key here
+  };
+
+  var cardsCreated = false;
+
+  function createEmptyCard(iterationCard) {
+    var cardId = 'channel_' + (iterationCard + 1);
+
+    var htmlCard = '<div class="channel cardCounts ' + cardId + '">'
+                  + '<div class="num" id="num_' + cardId + '">' + (iterationCard + 1) + '</div>'
+                  + '<img src="tgfgfritu.png" class="channelImage">'
+                  + '<div class="card-content">'
+                  + '<div class="channelName">loading...</div>'
+                  + '<div class="subscriberCount odometer">0</div>'
+                  + '</div>'
+                  + '</div>'
+                  + '</div>';
+
+    document.querySelector('.cards-container').insertAdjacentHTML('beforeend', htmlCard);
+  }
+
+  function createCard(channelId, iterationCard) {
+  var cardId = 'channel_' + (iterationCard + 1);
+
+  var existingCard = document.querySelector('.' + cardId);
+  if (existingCard) {
+    updateCardData(channelId, existingCard);
+    return;
+  }
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://www.googleapis.com/youtube/v3/channels?part=snippet%2Cstatistics&id=' + channelId + '&key=' + config.apiKey);
+
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      var data = JSON.parse(xhr.responseText);
+      var subscriberCount = data.items[0].statistics.subscriberCount;
+      var channelTitle = data.items[0].snippet.title;
+      var channelImage = data.items[0].snippet.thumbnails.medium.url;
+
+      var htmlCard = '<div class="channel cardCounts ' + cardId + '">'
+                    + '<div class="num" id="num_' + cardId + '">' + (iterationCard + 1) + '</div>'
+                    + '<img src="' + channelImage + '" class="channelImage">'
+                    + '<div class="card-content">'
+                    + '<div class="channelName">' + channelTitle + '</div>'
+                    + '<div class="subscriberCount odometer">' + subscriberCount + '</div>'
+                    + '</div>'
+                    + '</div>';
+
+      existingCard.outerHTML = htmlCard;
+    }
+  };
+
+  xhr.send();
+}
+
+
+function updateCardData(channelId, card) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://www.googleapis.com/youtube/v3/channels?part=snippet%2Cstatistics&id=' + channelId + '&key=' + config.apiKey);
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            var subscriberCount = data.items[0].statistics.subscriberCount;
+            var channelName = data.items[0].snippet.title;
+            var channelImage = data.items[0].snippet.thumbnails.medium.url;
+
+            var subscriberCountElement = card.querySelector('.subscriberCount.odometer');
+            if (subscriberCountElement) {
+                subscriberCountElement.textContent = subscriberCount;
+            }
+
+            var channelNameElement = card.querySelector('.channelName');
+            if (channelNameElement) {
+                channelNameElement.textContent = channelName;
+            }
+
+            var channelImageElement = card.querySelector('.channelImage');
+            if (channelImageElement) {
+                channelImageElement.src = channelImage;
+            }
+        }
+    };
+
+    xhr.send();
+}
+
+  function refreshSubscriberCounts() {
+    var xhrChannels = new XMLHttpRequest();
+    xhrChannels.open('GET', 'http://localhost:3000/channels.json');
+
+    xhrChannels.onload = function () {
+      if (xhrChannels.status === 200) {
+        var channelsData = JSON.parse(xhrChannels.responseText);
+
+        channelsData.reverse();
+
+        channelsData.forEach(function (channelId, index) {
+          createCard(channelId, index);
+        });
+
+        cardsCreated = true;
+      }
+    };
+
+    xhrChannels.send();
+  }
+
+  function updateOdometerValues() {
+    var cards = document.querySelectorAll('.channel');
+    cards.forEach(function (card) {
+      var channelId = card.classList[2].split('_')[1];
+      updateSubscriberCount(channelId, card);
+    });
+  }
+
+  var cardsContainer = document.createElement('div');
+  cardsContainer.className = 'cards-container';
+  document.body.appendChild(cardsContainer);
+
+  for (var i = 0; i < config.channelCount; i++) {
+    createEmptyCard(i);
+  }
+
+  refreshSubscriberCounts();
+
+  setInterval(refreshSubscriberCounts, 5000);
+
+  setInterval(updateOdometerValues, 5000);
+</script>
+<script src="jquery.min.js"></script>
+<script src="odometer.js"></script>
+</body>
+</html>
