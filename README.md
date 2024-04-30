@@ -20,6 +20,7 @@ To make it work, you need to get your own API key. Follow these steps:
 5. Click on "Enable".
 6. Go to "Credentials", click on "Create credentials", and choose "API keys".
 7. Copy the generated API key.
+   ![Shoutout Wall](img/bg.png)
 
 Now, go to the folder with Shoutout wall, navigate to "public" and open "index.html" in any text editor. You will see a section where you need to paste your API key.
 
