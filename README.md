@@ -1,6 +1,6 @@
 # Shoutout-wall
 
-![Shoutout Wall](img/shoutout_wall.jpg)
+![Shoutout Wall](img/bg.png)
 
 Want to create an automatic Shoutout-wall? Then this repository is for you!
 
