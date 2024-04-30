@@ -15,12 +15,29 @@ If you already have it, proceed to the next step. Download or clone the reposito
 To make it work, you need to get your own API key. Follow these steps:
 1. Go to [Google Cloud Console](https://console.cloud.google.com/).
 2. Click on "New project" and give it any name.
+
+![Shoutout Wall](img/img1.png)
+
 3. Make sure the project is selected.
+
+![Shoutout Wall](img/img2.png)
+
 4. Go to "Library" and search for "YouTube Data API v3", then select it.
+
+![Shoutout Wall](img/img3.png)
+![Shoutout Wall](img/img4.png)
+
 5. Click on "Enable".
+
+![Shoutout Wall](img/img5.png)
+
 6. Go to "Credentials", click on "Create credentials", and choose "API keys".
+
+![Shoutout Wall](img/img6.png)
+
 7. Copy the generated API key.
-   ![Shoutout Wall](img/img6.png)
+
+![Shoutout Wall](img/img7.png)
 
 Now, go to the folder with Shoutout wall, navigate to "public" and open "index.html" in any text editor. You will see a section where you need to paste your API key.
 
