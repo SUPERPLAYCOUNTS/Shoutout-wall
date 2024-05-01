@@ -45,7 +45,6 @@ Now, go to the folder with Shoutout wall, navigate to "public" and open "index.h
 
 ![Shoutout Wall](img/img9.png)
 
-No problem! Here's the updated section about the opening process with the addition of installing necessary packages using npm:
 
 **Opening:**
 Now, before starting the Shoutout-wall, we need to install some dependencies. Open cmd, navigate to the directory where Shoutout wall is located (`cd <path_to_shoutout_wall>`), then type `npm install`. This command will install all the required packages automatically.
